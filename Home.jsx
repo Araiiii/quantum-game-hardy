@@ -7,10 +7,10 @@ export default function Home() {
   const [explanation, setExplanation] = useState("");
 
   const equations = [
-    { text: "|ψ₁⟩ = 1/√2 |01⟩ − 1/√2 |10⟩", solution: { ac: 0, ad: 1 / Math.sqrt(2), bc: -1 / Math.sqrt(2), bd: 0 }, explanation: "ψ₁ is entangled 🌟" },
-    { text: "|ψ₂⟩ = 1/√3 |00⟩ + 1/√3 |10⟩ + 1/√3 |11⟩", solution: { ac: 1 / Math.sqrt(3), ad: 0, bc: 1 / Math.sqrt(3), bd: 1 / Math.sqrt(3) }, explanation: "ψ₂ is entangled 🌟" },
-    { text: "|ψ₃⟩ = 1/2 |00⟩ + 1/2 |01⟩ + 1/2 |10⟩ − 1/2 |11⟩", solution: { ac: 0.5, ad: 0.5, bc: 0.5, bd: -0.5 }, explanation: "ψ₃ is entangled 🌟" },
-    { text: "|ψ₄⟩ = 1/√2 |00⟩ + 1/√2 |10⟩", solution: { ac: 1 / Math.sqrt(2), ad: 0, bc: 1 / Math.sqrt(2), bd: 0 }, explanation: "ψ₄ is not entangled 🐣" },
+    { text: "|ψ₁⟩ = 1/√2 |01⟩ − 1/√2 |10⟩", solution: { ac: 0, ad: 1 / Math.sqrt(2), bc: -1 / Math.sqrt(2), bd: 0 }, explanation: "This is entangled!" },
+    { text: "|ψ₂⟩ = 1/√3 |00⟩ + 1/√3 |10⟩ + 1/√3 |11⟩", solution: { ac: 1 / Math.sqrt(3), ad: 0, bc: 1 / Math.sqrt(3), bd: 1 / Math.sqrt(3) }, explanation: "This is entangled!" },
+    { text: "|ψ₃⟩ = 1/2 |00⟩ + 1/2 |01⟩ + 1/2 |10⟩ − 1/2 |11⟩", solution: { ac: 0.5, ad: 0.5, bc: 0.5, bd: -0.5 }, explanation: "This is entangled." },
+    { text: "|ψ₄⟩ = 1/√2 |00⟩ + 1/√2 |01⟩", solution: { ac: 1 / Math.sqrt(2), ad: 1 / Math.sqrt(2), bc: 0, bd: 0 }, explanation: "ψ₄ is not entangled! This is product state" },
   ];
 
   const parseValue = (text) => {
@@ -49,10 +49,10 @@ export default function Home() {
     const tol = 1e-5;
     const sol = equations[eqNumber].solution;
     let message = "";
-    message += Math.abs(ac - sol.ac) < tol ? "ac: ✔️\n" : "ac: ❌\n";
-    message += Math.abs(ad - sol.ad) < tol ? "ad: ✔️\n" : "ad: ❌\n";
-    message += Math.abs(bc - sol.bc) < tol ? "bc: ✔️\n" : "bc: ❌\n";
-    message += Math.abs(bd - sol.bd) < tol ? "bd: ✔️\n" : "bd: ❌\n";
+    message += Math.abs(ac - sol.ac) < tol ? "ac: correct\n" : "ac: incorrect\n";
+    message += Math.abs(ad - sol.ad) < tol ? "ad: correct\n" : "ad: incorrect\n";
+    message += Math.abs(bc - sol.bc) < tol ? "bc: correct\n" : "bc: incorrect\n";
+    message += Math.abs(bd - sol.bd) < tol ? "bd: correct\n" : "bd: incorrect\n";
     setResult(message);
     setExplanation(equations[eqNumber].explanation);
   };
@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
     <div style={{ background: "#5d4d4dff", minHeight: "100vh", padding: "20px", color: "white" }}>
-      <h1>Quantum Entanglement Expander Game</h1>
+      <h1>My Quantum Entanglement Game</h1>
 
       <div style={{ background: "#4c3b3b", padding: "15px", borderRadius: "10px", marginBottom: "20px" }}>
         <h2>{equations[eqNumber].text}</h2>
